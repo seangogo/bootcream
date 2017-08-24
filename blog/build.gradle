@@ -2,8 +2,12 @@ buildscript {
 	ext {
 		springBootVersion = '1.5.6.RELEASE'
 	}
+	//自定义thymeleaf 和　thymeleaf layout dialect 的版本
+	ext ['thymeleaf.version']='3.0.3.RELEASE'
+	ext ['thymeleaf-layout-dialect.version']='2.2.0'
 	repositories {
 		mavenCentral()
+		//http://maven.aliyun.com/nexus/content/groups/public/
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -24,11 +28,9 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
-	//compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.projectlombok:lombok')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
-/*buildscript{
-	//自定义thymeleaf 和　thymeleaf layout dialect 的版本
-	exec ['thymeleaf.version']='3.0.3.RELEASE'
-	exec ['thymeleaf-layout-dialect.version']='2.2.0'
-}*/
