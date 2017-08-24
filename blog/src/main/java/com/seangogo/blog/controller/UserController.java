@@ -3,15 +3,19 @@ package com.seangogo.blog.controller;
 import com.seangogo.blog.domain.User;
 import com.seangogo.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by sean on 2017/8/24.
  */
-@RestController
-@RequestMapping
+@Controller
+@RequestMapping("/users")
 public class UserController {
     @Autowired
     UserService userService;
@@ -46,11 +50,11 @@ public class UserController {
      * @param model
      * @return
      */
-    @PostMapping("/from")
+    @GetMapping("/form")
     public ModelAndView createForm(Model model){
         model.addAttribute("user",new User());
         model.addAttribute("title","创建用户");
-        return new ModelAndView("users/from","userModel",model);
+        return new ModelAndView("users/form", "userModel", model);
     }
 
     /**
@@ -62,7 +66,8 @@ public class UserController {
     @PostMapping
     public ModelAndView saveOrUpdateUser(User user,Model model){
         userService.saveUser(user);
-        return new ModelAndView("user/from","userModel",model);
+        //  model.addAttribute("title","查看用户");
+        return new ModelAndView("redirect:/users", "userModel", model);
     }
 
 }

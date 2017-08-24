@@ -16,7 +16,8 @@ public class UserApiController {
     UserService userService;
     @RequestMapping(value = "/api/user/{id}", method = RequestMethod.GET)
     public User findOneUser(@PathVariable("id") Long id) {
-        return userService.findUserById(id);
+        User user = userService.findUserById(id);
+        return user;
     }
 
     @RequestMapping(value = "/api/user", method = RequestMethod.GET)
