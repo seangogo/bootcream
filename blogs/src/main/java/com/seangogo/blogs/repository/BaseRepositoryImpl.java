@@ -13,9 +13,9 @@ public class BaseRepositoryImpl<T, ID extends Serializable>
         extends SimpleJpaRepository<T, ID> implements BaseRepository<T, ID> {
     private final EntityManager entityManager;
 
-    public BaseRepositoryImpl(JpaEntityInformation entityInformation,
+    public BaseRepositoryImpl(JpaEntityInformation jpaEntityInformation,
                             EntityManager entityManager) {
-        super(entityInformation, entityManager);
+        super(jpaEntityInformation, entityManager);
 
         // Keep the EntityManager around to used from the newly introduced methods.
         this.entityManager = entityManager;
