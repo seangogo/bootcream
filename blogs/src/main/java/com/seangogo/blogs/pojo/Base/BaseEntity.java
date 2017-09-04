@@ -2,6 +2,8 @@ package com.seangogo.blogs.pojo.Base;
 
 import com.seangogo.blogs.pojo.auditable.ValidatorListener;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -16,8 +18,10 @@ import java.util.Date;
 import static javax.persistence.TemporalType.TIMESTAMP;
 
 @MappedSuperclass
-@EntityListeners({ ValidatorListener.class,AuditingEntityListener.class})
+@EqualsAndHashCode(exclude = "id")
 @Data
+@EntityListeners({ ValidatorListener.class,AuditingEntityListener.class})
+@Accessors(fluent  = true) //链式写法
 public abstract class BaseEntity<U> implements Serializable {
     private static final long serialVersionUID = 1L;
     /**

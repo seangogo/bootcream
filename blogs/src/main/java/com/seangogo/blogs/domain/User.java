@@ -19,6 +19,7 @@ import java.util.Date;
 @Data
 @Table(name = "Sys_User")
 @ToString
+
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "fieldHandler"})
 public class User extends BaseEntity<User> {
 

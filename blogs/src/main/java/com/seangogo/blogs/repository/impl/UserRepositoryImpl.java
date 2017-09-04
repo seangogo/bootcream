@@ -23,9 +23,14 @@ public class UserRepositoryImpl implements UserRepositoryPlus {
     }
 
     public List<User> getList(String id) {
-        JPAQuery<User> query = new JPAQuery<User>(this.em);
+        //对于HQL模块，HibernateQuery是Query的主要实现。它被实例化为这样：HQLQuery query = new HibernateQuery (session);
+        //要使用JPA API而不是Hibernate API，您可以像这样实例化JPAQuery：HQLQuery query = new JPAQuery (entityManager);
+        JPAQuery<User> query = new JPAQuery(this.em);
         QUser qUser = QUser.user;
-        query.from(qUser);
+        User user=new User();
+        user.setName("ssss");
+        System.out.println(user);
+        query.from(qUser).where(qUser.name.eq("sean")).fetch();
         BooleanBuilder exp = new BooleanBuilder();
         /*if (StringUtils.isEmpty(id)) {
             exp = exp.and(scategory.site.id.in(siteId));
