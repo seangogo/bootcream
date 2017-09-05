@@ -28,7 +28,7 @@ public class UserRepositoryImpl implements UserRepositoryPlus {
         JPAQuery<User> query = new JPAQuery(this.em);
         QUser qUser = QUser.user;
         User user=new User();
-        user.setName("ssss");
+        user.name("ssss");
         System.out.println(user);
         query.from(qUser).where(qUser.name.eq("sean")).fetch();
         BooleanBuilder exp = new BooleanBuilder();

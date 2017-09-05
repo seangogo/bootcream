@@ -4,16 +4,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.seangogo.blogs.annotation.ForeignShow;
 import com.seangogo.blogs.annotation.Header;
 import com.seangogo.blogs.pojo.Base.BaseEntity;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by sean on 2017/8/31.
  */
 @Entity
-@Data
+@Getter
+@Setter
+@Accessors(fluent = true)
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler", "fieldHandler" })
 public class Role extends BaseEntity<User>{
     @ForeignShow
@@ -32,4 +37,11 @@ public class Role extends BaseEntity<User>{
     @Header(name = "排序")
     @Column(name = "sort")
     private Integer sort;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "admin_role", joinColumns = @JoinColumn(name = "role_id",
+            referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "admin_id",
+            referencedColumnName = "id"))
+    @JsonIgnoreProperties("roles")
+    private Set<Admin> admins = new HashSet();
 }

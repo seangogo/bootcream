@@ -28,7 +28,7 @@ public abstract class BaseEntity<U> implements Serializable {
      * 主键ID自动生成策略
      */
     @Id
-    @GenericGenerator(name = "id", strategy = "uuid")
+    @GenericGenerator(name = "id", strategy = "uuid2")
     @GeneratedValue(generator = "id")
     @Column(name = "id", length = 36)
     protected String id;
@@ -51,7 +51,7 @@ public abstract class BaseEntity<U> implements Serializable {
      * 删除标记(0启用，1禁用)
      */
     @Column(name = "deleted")
-    private Integer deleted;
+    private boolean deleted;
 
     /**
      * 版本号

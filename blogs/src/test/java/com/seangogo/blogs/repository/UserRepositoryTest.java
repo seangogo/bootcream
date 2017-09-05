@@ -21,20 +21,21 @@ public class UserRepositoryTest {
     @Test
     public void save() throws Exception {
         User user=new User();
-        user.setQq("949247328");
+        user.qq("949247328");
         userRepository.save(user);
     }
+
     @Test
     public void findOne() throws Exception {
         User user=new User();
-        user.setQq("949247328");
+        user.qq("949247328");
         User repositoryOne=userRepository.findOne(Example.of(user));
         System.out.println(repositoryOne);
     }
     @Test
     public void findList() throws Exception {
         User user=new User();
-        user.setQq("949247328");
+        user.qq("949247328");
         List<User> Users=userRepository.getList("22");
         System.out.println(Users.size());
     }
