@@ -1,3 +1,4 @@
+
 spring:
   profiles:
     active: dev
@@ -15,3 +16,12 @@ spring:
   mvc:
     favicon:
       enabled: false
+server:
+  port: 8008
+
+security:
+  user:
+    name: admin
+    password: admin
+
+

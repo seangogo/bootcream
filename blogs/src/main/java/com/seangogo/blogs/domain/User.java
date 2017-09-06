@@ -1,7 +1,7 @@
 package com.seangogo.blogs.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.seangogo.blogs.annotation.Header;
+import com.seangogo.blogs.pojo.annotation.Header;
 import com.seangogo.blogs.domain.enums.Gender;
 import lombok.Getter;
 import lombok.Setter;

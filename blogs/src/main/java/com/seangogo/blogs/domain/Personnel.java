@@ -1,6 +1,6 @@
 package com.seangogo.blogs.domain;
 
-import com.seangogo.blogs.annotation.Header;
+import com.seangogo.blogs.pojo.annotation.Header;
 import com.seangogo.blogs.domain.enums.PersonnelType;
 import com.seangogo.blogs.pojo.Base.BaseEntity;
 import lombok.Data;

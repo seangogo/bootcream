@@ -2,7 +2,7 @@ package com.seangogo.blogs.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.seangogo.blogs.annotation.Header;
+import com.seangogo.blogs.pojo.annotation.Header;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

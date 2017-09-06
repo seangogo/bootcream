@@ -1,4 +1,4 @@
-package com.seangogo.blogs.annotation;
+package com.seangogo.blogs.pojo.annotation;
 
 import java.lang.annotation.*;
 

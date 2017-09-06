@@ -1,4 +1,4 @@
-package com.seangogo.blogs.enums;
+package com.seangogo.blogs.domain.enums;
 
 /**
  * @author Naresh Joshi
