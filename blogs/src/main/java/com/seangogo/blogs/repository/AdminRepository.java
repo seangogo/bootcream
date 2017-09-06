@@ -5,5 +5,5 @@ import com.seangogo.blogs.domain.Admin;
 /**
  * Created by sean on 2017/9/5.
  */
-public interface AdminRepository extends BaseRepository<Admin,String> {
+public interface AdminRepository extends BaseRepository<Admin> {
 }

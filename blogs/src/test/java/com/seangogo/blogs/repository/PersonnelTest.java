@@ -4,11 +4,13 @@ import com.seangogo.blogs.domain.Admin;
 import com.seangogo.blogs.domain.Personnel;
 import com.seangogo.blogs.domain.Role;
 import com.seangogo.blogs.domain.User;
+import com.seangogo.blogs.utils.JsonMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Example;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;
@@ -19,6 +21,7 @@ import java.util.*;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
+@Slf4j
 public class PersonnelTest {
 
     @Autowired
@@ -36,11 +39,11 @@ public class PersonnelTest {
         User user = new User();
         user.qq("949247328").birthday(new Date()).email("949247328@qq.com").mobile("136997956178");
         userRepository.save(user);
-        Role role=new Role();
+        Role role = new Role();
         role.code("code").name("角色一").remark("备注").sort(1);
-  //      roleRepository.save(role);
+        //      roleRepository.save(role);
         Admin admin = new Admin();
-        Set<Role> roles=new HashSet();
+        Set<Role> roles = new HashSet();
         roles.add(role);
         admin.roles(roles);
         admin.nickname("后台用户昵称").loginName("15972911474").password("mima");
@@ -62,14 +65,25 @@ public class PersonnelTest {
 
     @Test
     public void findList() throws Exception {
-        List<User> Users=userRepository.findAll();
+        List<User> Users = userRepository.findAll();
         System.out.println(Users.size());
-        Collection<Admin> admins=adminRepository.findAll();
+        Collection<Admin> admins = adminRepository.findAll();
 /*        admins.stream().filter(admin -> admin.roles().size()>0)
                 .forEach(admin -> admin.roles().stream().forEach(
                         role -> System.out.println(role.id())
                 ))*/
+        JsonMapper mapper = new JsonMapper();
+        log.info("admins:{}", mapper.toJson(admins));
         admins.stream().forEach(admin -> admin.roles().stream().forEach(role ->
-                GsonJsonParser));
+                log.info("角色实体json:{}", mapper.toJson(role))
+        ));
+    }
+
+    @Test
+    public void deleteOne() throws Exception {
+        Personnel personnel = new Personnel();
+        Example<Personnel> example = Example.of(personnel.loginName("223123"));
+        List<Personnel> personnels = personnelRepository.findAll(example);
+        personnels.forEach(user1 ->personnelRepository.delete(user1));
     }
 }

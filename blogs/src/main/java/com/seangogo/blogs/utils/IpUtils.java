@@ -1,6 +1,7 @@
 package com.seangogo.blogs.utils;
 
-import org.apache.commons.lang3.StringUtils;
+
+import org.springframework.util.StringUtils;
 
 import java.nio.ByteBuffer;
 
@@ -162,19 +163,19 @@ public abstract class IpUtils {
 	}
 
 	public static boolean inRange(String range, String ip) {
-		if (StringUtils.isBlank(range)) {
+		if (!StringUtils.hasText(range)) {
 			return true;
 		}
 		byte[] ipBytes = ip2Bytes(ip);
 		if (ipBytes == null) {
 			return false;
 		}
-		range = StringUtils.remove(range, ' ');
-		range = StringUtils.remove(range, '\r');
+		range = StringUtils.deleteAny(range, " ");
+		range = StringUtils.deleteAny(range, "\r");
 		int index;
 		byte[] lineBytes, beginBytes, endBytes;
-		for (String line : StringUtils.split(range, '\n')) {
-			if (StringUtils.isNotBlank(line)) {
+		for (String line : StringUtils.split(range, "\n")) {
+			if (StringUtils.hasText(line)) {
 				index = line.indexOf('-');
 				if (index != -1) {
 					beginBytes = ip2Bytes(line.substring(0, index));
