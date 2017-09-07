@@ -1,9 +1,10 @@
 package com.seangogo.blogs.domain;
 
-import com.seangogo.blogs.pojo.annotation.Header;
 import com.seangogo.blogs.domain.enums.PersonnelType;
 import com.seangogo.blogs.pojo.Base.BaseEntity;
-import lombok.Data;
+import com.seangogo.blogs.pojo.annotation.Header;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -12,7 +13,8 @@ import javax.persistence.*;
  * Created by sean on 2017/9/5.
  */
 @Entity
-@Data
+@Getter
+@Setter
 @Inheritance
 @DiscriminatorColumn(name="personnelType")
 @DiscriminatorValue("PERSONNEL")

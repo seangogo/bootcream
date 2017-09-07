@@ -1,4 +1,4 @@
-package com.seangogo.blogs.repository;
+package com.seangogo.blogs.repository.plus;
 
 import com.seangogo.blogs.domain.User;
 

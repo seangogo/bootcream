@@ -17,7 +17,6 @@ import java.util.Set;
 @Data
 @Accessors(fluent = true)
 @DiscriminatorValue("ADMIN")
-
 public class Admin extends Personnel {
     @Header(name = "昵称")
     @Column(name = "nickname")

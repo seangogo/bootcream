@@ -1,7 +1,8 @@
-package com.seangogo.blogs.repository;
+package com.seangogo.blogs.repository.support;
 
 import com.seangogo.blogs.pojo.Base.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.NoRepositoryBean;
 
 import java.io.Serializable;
@@ -13,6 +14,6 @@ import java.io.Serializable;
  * @param <T>
  */
 @NoRepositoryBean
-public interface BaseRepository<T extends BaseEntity>
-        extends JpaRepository<T, Serializable>{
+public interface BaseRepository<T extends BaseEntity,ID extends Serializable>
+        extends JpaRepository<T, Serializable>, JpaSpecificationExecutor<T> {
 }

@@ -4,7 +4,7 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.seangogo.blogs.domain.User;
 import com.seangogo.blogs.domain.dsl.QUser;
-import com.seangogo.blogs.repository.UserRepositoryPlus;
+import com.seangogo.blogs.repository.plus.UserRepositoryPlus;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -1,8 +1,8 @@
 package com.seangogo.blogs.config;
 
 import com.seangogo.blogs.pojo.Base.BaseEntity;
-import com.seangogo.blogs.repository.BaseRepository;
-import com.seangogo.blogs.repository.BaseRepositoryImpl;
+import com.seangogo.blogs.repository.support.BaseRepository;
+import com.seangogo.blogs.repository.support.BaseRepositoryImpl;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
