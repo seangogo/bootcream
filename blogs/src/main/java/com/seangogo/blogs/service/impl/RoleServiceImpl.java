@@ -4,8 +4,8 @@ import com.seangogo.blogs.domain.Resource;
 import com.seangogo.blogs.domain.Role;
 import com.seangogo.blogs.repository.RoleRepository;
 import com.seangogo.blogs.repository.support.BaseRepository;
-import com.seangogo.blogs.service.IResourceService;
-import com.seangogo.blogs.service.IRoleService;
+import com.seangogo.blogs.service.ResourceService;
+import com.seangogo.blogs.service.RoleService;
 import com.seangogo.blogs.service.support.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,12 +24,12 @@ import java.util.Set;
  * @since 2016-12-28
  */
 @Service
-public class RoleServiceImpl extends BaseServiceImpl<Role, String> implements IRoleService {
+public class RoleServiceImpl extends BaseServiceImpl<Role, String> implements RoleService {
 
 	@Autowired
 	private RoleRepository roleRepository;
 	@Autowired
-	private IResourceService resourceService;
+	private ResourceService resourceService;
 	
 	@Override
 	public BaseRepository<Role, String> getBaseDao() {

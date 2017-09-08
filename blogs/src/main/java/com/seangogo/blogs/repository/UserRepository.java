@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserRepository  extends BaseRepository<User,String>/*, UserRepositoryPlus */{
-        User findByUserName(String username);
+        User findByName(String username);
 }

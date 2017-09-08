@@ -15,7 +15,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "tb_resource")
-public class Resource extends BaseEntity {
+public class Resource extends BaseEntity<User> {
 
 	/**
 	 * 资源名称

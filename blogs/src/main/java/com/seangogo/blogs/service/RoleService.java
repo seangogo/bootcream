@@ -1,7 +1,7 @@
 package com.seangogo.blogs.service;
 
 import com.seangogo.blogs.domain.Role;
-import com.seangogo.blogs.service.support.IBaseService;
+import com.seangogo.blogs.service.support.BaseService;
 
 /**
  * <p>
@@ -11,7 +11,7 @@ import com.seangogo.blogs.service.support.IBaseService;
  * @author SPPan
  * @since 2016-12-28
  */
-public interface IRoleService extends IBaseService<Role,String> {
+public interface RoleService extends BaseService<Role,String> {
 
 	/**
 	 * 添加或者修改角色

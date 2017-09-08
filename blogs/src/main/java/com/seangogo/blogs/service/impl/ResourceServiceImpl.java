@@ -5,8 +5,8 @@ import com.seangogo.blogs.domain.Role;
 import com.seangogo.blogs.pojo.ZtreeView;
 import com.seangogo.blogs.repository.ResourceRepository;
 import com.seangogo.blogs.repository.support.BaseRepository;
-import com.seangogo.blogs.service.IResourceService;
-import com.seangogo.blogs.service.IRoleService;
+import com.seangogo.blogs.service.ResourceService;
+import com.seangogo.blogs.service.RoleService;
 import com.seangogo.blogs.service.support.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -26,13 +26,13 @@ import java.util.List;
  */
 @Service
 public class ResourceServiceImpl extends BaseServiceImpl<Resource, String>
-		implements IResourceService {
+		implements ResourceService {
 
 	@Autowired
 	private ResourceRepository resourceRepository;
 
 	@Autowired
-	private IRoleService roleService;
+	private RoleService roleService;
 
 	@Override
 	public BaseRepository<Resource, String> getBaseDao() {

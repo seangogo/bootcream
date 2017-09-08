@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
@@ -19,7 +20,8 @@ import java.io.IOException;
  * Created by sean on 2017/9/6.
  */
 @Controller
-public class loginController {
+@RequestMapping("admin")
+public class AdminLoginController {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     private final static String MAIN_PAGE = PropertiesUtil.getValue("page.main");
@@ -28,9 +30,9 @@ public class loginController {
     /*@Autowired
     OAuthServices oAuthServices;*/
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String register(Model model) {
+    public ModelAndView register(Model model) {
        // model.addAttribute("oAuthInfo", new OAuthUser());
-        return REGISTER_PAGE;
+        return new ModelAndView(REGISTER_PAGE);
     }
 
     //SpringBoot SpringMVC实现文件下载

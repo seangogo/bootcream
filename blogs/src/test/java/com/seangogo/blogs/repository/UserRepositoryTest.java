@@ -36,7 +36,5 @@ public class UserRepositoryTest {
     public void findList() throws Exception {
         User user=new User();
         user.qq("949247328");
-        List<User> Users=userRepository.getList("22");
-        System.out.println(Users.size());
     }
 }

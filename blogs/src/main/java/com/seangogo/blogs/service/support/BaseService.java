@@ -8,7 +8,7 @@ import org.springframework.data.jpa.domain.Specification;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IBaseService<T, ID extends Serializable> {
+public interface BaseService<T, ID extends Serializable> {
     public abstract T find(ID id);
 
     public abstract List<T> findAll();

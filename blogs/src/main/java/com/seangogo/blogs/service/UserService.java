@@ -2,7 +2,7 @@ package com.seangogo.blogs.service;
 
 
 import com.seangogo.blogs.domain.User;
-import com.seangogo.blogs.service.support.IBaseService;
+import com.seangogo.blogs.service.support.BaseService;
 
 /**
  * <p>
@@ -12,7 +12,7 @@ import com.seangogo.blogs.service.support.IBaseService;
  * @author SPPan
  * @since 2016-12-28
  */
-public interface IUserService extends IBaseService<User, String> {
+public interface UserService extends BaseService<User, String> {
 
 	/**
 	 * 根据用户名查找用户

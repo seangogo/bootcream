@@ -1,9 +1,10 @@
 package com.seangogo.blogs.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.seangogo.blogs.pojo.annotation.Header;
 import com.seangogo.blogs.pojo.Base.BaseEntity;
-import lombok.Data;
+import com.seangogo.blogs.pojo.annotation.Header;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +13,8 @@ import javax.persistence.Entity;
  * 用户头像
  */
 @Entity
-@Data
+@Getter
+@Setter
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler", "fieldHandler" })
 public class UserAvatar extends BaseEntity<User> {
 

@@ -4,8 +4,8 @@ import com.seangogo.blogs.domain.Role;
 import com.seangogo.blogs.domain.User;
 import com.seangogo.blogs.repository.UserRepository;
 import com.seangogo.blogs.repository.support.BaseRepository;
-import com.seangogo.blogs.service.IRoleService;
-import com.seangogo.blogs.service.IUserService;
+import com.seangogo.blogs.service.RoleService;
+import com.seangogo.blogs.service.UserService;
 import com.seangogo.blogs.service.support.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +23,13 @@ import java.util.Set;
  * @since 2016-12-28
  */
 @Service
-public class UserServiceImpl extends BaseServiceImpl<User, String> implements IUserService {
+public class UserServiceImpl extends BaseServiceImpl<User, String> implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
 	
 	@Autowired
-	private IRoleService roleService;
+	private RoleService roleService;
 	
 	@Override
 	public BaseRepository<User, String> getBaseDao() {
@@ -38,7 +38,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, String> implements IU
 
 	@Override
 	public User findByUserName(String username) {
-		return userRepository.findByUserName(username);
+		return userRepository.findByName(username);
 	}
 
 	@Override

@@ -2,7 +2,7 @@ package com.seangogo.blogs.service.support.impl;
 
 import com.seangogo.blogs.pojo.Base.BaseEntity;
 import com.seangogo.blogs.repository.support.BaseRepository;
-import com.seangogo.blogs.service.support.IBaseService;
+import com.seangogo.blogs.service.support.BaseService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Transactional
-public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializable> implements IBaseService<T, ID> {
+public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializable> implements BaseService<T, ID> {
 
     public abstract BaseRepository<T, ID> getBaseDao();
 

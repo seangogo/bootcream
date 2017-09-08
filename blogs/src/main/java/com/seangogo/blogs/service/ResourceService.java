@@ -2,7 +2,7 @@ package com.seangogo.blogs.service;
 
 import com.seangogo.blogs.domain.Resource;
 import com.seangogo.blogs.pojo.ZtreeView;
-import com.seangogo.blogs.service.support.IBaseService;
+import com.seangogo.blogs.service.support.BaseService;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * @author SPPan
  * @since 2016-12-28
  */
-public interface IResourceService extends IBaseService<Resource, String> {
+public interface ResourceService extends BaseService<Resource, String> {
 
 	/**
 	 * 获取角色的权限树
