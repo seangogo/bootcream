@@ -1,9 +1,11 @@
 package com.seangogo.blogs.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.seangogo.blogs.pojo.annotation.Header;
 import com.seangogo.blogs.domain.enums.Gender;
+import com.seangogo.blogs.domain.enums.PersonnelType;
+import com.seangogo.blogs.pojo.annotation.Header;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,6 +20,7 @@ import java.util.Date;
 @Getter
 @Setter
 @DiscriminatorValue("USER")
+@NoArgsConstructor
 @Accessors(fluent = true)
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "fieldHandler"})
 public class User extends Personnel {
@@ -37,10 +40,6 @@ public class User extends Personnel {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
-    @Header(name = "邮箱")
-    @Column(name = "email", length = 50)
-    private String email;
-
     @Header(name = "座机")
     @Column(name = "telphone")
     private String telphone;
@@ -57,4 +56,9 @@ public class User extends Personnel {
     @Column(name = "wechat")
     private String wechat;
 
+
+
+    public User(PersonnelType personnelType, String openAccount, String loginName, String password, String email) {
+        super(personnelType, openAccount, loginName, password, email);
+    }
 }

@@ -18,6 +18,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Table(name = "rbac_role")
 @Accessors(fluent = true)
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler", "fieldHandler" })
 public class Role extends BaseEntity<User>{
@@ -39,9 +40,19 @@ public class Role extends BaseEntity<User>{
     private Integer sort;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "admin_role", joinColumns = @JoinColumn(name = "role_id",
+    @JoinTable(name = "rbac_admin_role", joinColumns = @JoinColumn(name = "role_id",
             referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "admin_id",
             referencedColumnName = "id"))
     @JsonIgnoreProperties("roles")
     private Set<Admin> admins = new HashSet();
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "rbac_role_resource", joinColumns =  @JoinColumn(name = "role_id",
+            referencedColumnName = "id") , inverseJoinColumns =  @JoinColumn(name = "resource_id",
+            referencedColumnName = "id")
+    )
+    @JsonIgnoreProperties("roles")
+    private Set<Resource> resources=new HashSet<>();
+
 }

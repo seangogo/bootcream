@@ -17,14 +17,18 @@ import java.util.Set;
 @Data
 @Accessors(fluent = true)
 @DiscriminatorValue("ADMIN")
+@Table(name = "rbac_admin")
 public class Admin extends Personnel {
     @Header(name = "昵称")
     @Column(name = "nickname")
     private String nickname;
 
+    @Header(name = "锁定")
+    private  boolean locked;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
-    @JoinTable(name = "admin_role", joinColumns = @JoinColumn(name = "admin_id", referencedColumnName = "id"),
+    @JoinTable(name = "rbac_admin_role", joinColumns = @JoinColumn(name = "admin_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     @JsonIgnoreProperties("admins")
     private Set<Role> roles = new HashSet();

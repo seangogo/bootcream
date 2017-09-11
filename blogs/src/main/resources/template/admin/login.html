@@ -156,7 +156,6 @@
         <div style="text-align: left; margin-left: 10px;">
             <label><input type="checkbox" checked="checked" id="rememberMe"
                           style="width: 10px; height: 10px;">记住我</label>
-        <#--<p><b style='color:red;'>如果重启Tomcat，还是登录状态，是因为这里勾选了“记住我”。</b></p>-->
         </div>
         <button type="button" id="login">Login</button>
         <button type="button" id="register" class="register">Register</button>
@@ -264,7 +263,7 @@
                 $(i).replaceAll(this);
             });
             $("#login").off("click").on("click",function () {
-                    window.location.href="/register";
+                    window.location.href="${ctx!}/admin/register";
             })
         });
     });

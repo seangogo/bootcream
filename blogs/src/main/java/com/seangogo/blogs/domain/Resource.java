@@ -1,9 +1,18 @@
 package com.seangogo.blogs.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.seangogo.blogs.domain.enums.ResourceType;
 import com.seangogo.blogs.pojo.Base.BaseEntity;
+import com.seangogo.blogs.pojo.annotation.ForeignShow;
+import com.seangogo.blogs.pojo.annotation.Header;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * <p>
@@ -14,143 +23,52 @@ import javax.persistence.*;
  * @since 2016-12-28
  */
 @Entity
-@Table(name = "tb_resource")
+@Getter
+@Setter
+@Table(name = "rbac_resource")
 public class Resource extends BaseEntity<User> {
+    @ForeignShow
+    @Header(name = "名称")
+    @Column(name = "name", length = 50)
+    private String name;
 
-	/**
-	 * 资源名称
-	 */
-	private String name;
+    @Header(name = "编码")
+    @Column(name = "code", length = 50)
+    private String code;
 
-	/**
-	 * 资源唯一标识
-	 */
-	private String sourceKey;
+    // 0=目录 1=功能 2=按钮
+    @Header(name = "菜单类型")
+    @Enumerated(EnumType.STRING)
+    private ResourceType resourceType;
 
-	/**
-	 * 资源类型,0:目录;1:菜单;2:按钮
-	 */
-	private Integer type;
+    @Header(name = "url")
+    @Column(name = "url", length = 200)
+    private String url;
 
-	/**
-	 * 资源url
-	 */
-	private String sourceUrl;
+    @Header(name = "排序")
+    @Column(name = "sort")
+    private Integer sort;
 
-	/**
-	 * 层级
-	 */
-	private Integer level;
+    @Header(name = "父级ID")
+    @Column(name = "parent_id")
+    private String parentId;
 
-	/**
-	 * 排序
-	 */
-	private Integer sort;
+    @Header(name = "层级编码")
+    @Column(name = "levelCode", length = 36)
+    private String levelCode;
 
-	/**
-	 * 图标
-	 */
-	private String icon;
+    @Header(name = "图标")
+    @Column(name = "icon")
+    private String icon;
 
-	/**
-	 * 是否隐藏
-	 * 
-	 * 0显示 1隐藏
-	 */
-	private Integer isHide;
+    @Header(name = "备注")
+    @Column(name = "remark", length = 1000)
+    private String remark;
 
-	/**
-	 * 描述
-	 */
-	private String description;
-
-
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "parent_id")
-	private Resource parent;
-
-
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getSourceKey() {
-		return sourceKey;
-	}
-
-	public void setSourceKey(String sourceKey) {
-		this.sourceKey = sourceKey;
-	}
-
-	public Integer getType() {
-		return type;
-	}
-
-	public void setType(Integer type) {
-		this.type = type;
-	}
-
-	public String getSourceUrl() {
-		return sourceUrl;
-	}
-
-	public void setSourceUrl(String sourceUrl) {
-		this.sourceUrl = sourceUrl;
-	}
-
-	public Integer getLevel() {
-		return level;
-	}
-
-	public void setLevel(Integer level) {
-		this.level = level;
-	}
-
-	public Integer getSort() {
-		return sort;
-	}
-
-	public void setSort(Integer sort) {
-		this.sort = sort;
-	}
-
-	public String getIcon() {
-		return icon;
-	}
-
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
-
-	public Integer getIsHide() {
-		return isHide;
-	}
-
-	public void setIsHide(Integer isHide) {
-		this.isHide = isHide;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-	public Resource getParent() {
-		return parent;
-	}
-
-	public void setParent(Resource parent) {
-		this.parent = parent;
-	}
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinTable(name = "rbac_role_resource", joinColumns = @JoinColumn(name = "resource_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @JsonIgnoreProperties("resources")
+    private Set<Role> roles = new HashSet();
 }

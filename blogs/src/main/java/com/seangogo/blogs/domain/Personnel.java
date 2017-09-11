@@ -37,4 +37,19 @@ public class Personnel extends BaseEntity<Personnel> {
     @Header(name = "密码")
     @Column(name = "password")
     private String password;
+
+    @Header(name = "邮箱")
+    @Column(name = "email", length = 50)
+    private String email;
+
+    public Personnel() {
+    }
+
+    public Personnel(PersonnelType personnelType, String openAccount, String loginName, String password, String email) {
+        this.personnelType = personnelType;
+        this.openAccount = openAccount;
+        this.loginName = loginName;
+        this.password = password;
+        this.email = email;
+    }
 }

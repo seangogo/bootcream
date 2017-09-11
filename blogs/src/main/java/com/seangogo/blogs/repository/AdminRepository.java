@@ -7,4 +7,7 @@ import com.seangogo.blogs.repository.support.BaseRepository;
  * Created by sean on 2017/9/5.
  */
 public interface AdminRepository extends BaseRepository<Admin,String> {
+    Admin findByLoginName(String loginName);
+
+    boolean existsByEmail(String email);
 }

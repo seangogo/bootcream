@@ -72,7 +72,7 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource, String>
 		if(resource.id() != null){
 			Resource dbResource = find(resource.id());
 			dbResource.setName(resource.getName());
-			dbResource.setSourceKey(resource.getSourceKey());
+			/*dbResource.set(resource.getSourceKey());
 			dbResource.setType(resource.getType());
 			dbResource.setSourceUrl(resource.getSourceUrl());
 			dbResource.setLevel(resource.getLevel());
@@ -80,7 +80,7 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource, String>
 			dbResource.setIsHide(resource.getIsHide());
 			dbResource.setIcon(resource.getIcon());
 			dbResource.setDescription(resource.getDescription());
-			dbResource.setParent(resource.getParent());
+			dbResource.setParent(resource.getParent());*/
 			update(dbResource);
 		}else{
 			save(resource);

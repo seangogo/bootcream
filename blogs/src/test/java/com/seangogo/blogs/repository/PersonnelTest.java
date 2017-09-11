@@ -37,7 +37,7 @@ public class PersonnelTest {
     @Test
     public void save() throws Exception {
         User user = new User();
-        user.qq("949247328").birthday(new Date()).email("949247328@qq.com").mobile("136997956178");
+        user.qq("949247328").birthday(new Date()).email("949247328@qq.com");
         userRepository.save(user);
         Role role = new Role();
         role.code("code").name("角色一").remark("备注").sort(1);
